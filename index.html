@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var svg = d3.select("body").append("svg").attr({
+            width: 400,
+            height: 300,
+        });
+        var points = "10,10 ";
+        //
+        for (var i = 0; i < 20; i = i + 1) {
+            var num = random(20, 300);
+
+            points = points + (10 + num) + "," + (10 + 12 * (i + 1)) + " "
+            svg.append("circle").attr({
+                cx: 10 + num,
+                cy: 10 + 12 * (i + 1),
+                r: 5,
+                fill: "red"
+            });
+            svg.append("text").attr({
+                x: 20 + num,
+                y: 15 + 12 * (i + 1),
+                "font-size": 12
+            }).text(num);
+
+        }
+        svg.append("polyline").attr({
+            "points": points + "10," + (10 + 12 * (21 + 1)),
+            "fill": "rgba(0,0,0,0)",
+            "stroke": "black",
+        });
+
+        //產生亂數值
+        function random(N, M) {
+            return Math.floor(Math.random() * (M - N + 1) + N);
+        }
+    </script>
+</body>
+
+</html>
